@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+editorOptionsConvertTabsToSpaces=true
+editorOptionsIndentSize=4
+editorOptionsTabSize=4
+insertSpaceAfterCommaDelimiter=true
+insertSpaceAfterFunctionKeywordForAnonymousFunctions=false
+insertSpaceAfterKeywordsInControlFlowStatements=true
+insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets=false
+insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis=true
+insertSpaceAfterSemicolonInForStatements=true
+insertSpaceBeforeAndAfterBinaryOperators=true
+placeOpenBraceOnNewLineForControlBlocks=false
+placeOpenBraceOnNewLineForFunctions=false
+typeScriptBuildPath={""\:{}}

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Expenses</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+		<ion-card-content>
+		     <button ion-button icon-right block [navPush]="smsPage" >Parse SMS Entry 
+						<ion-icon name="arrow-dropright-circle"></ion-icon>
+		     </button>
+		     <button ion-button icon-right block [navPush]="newBillPage" >New Bill Entry
+		     		<ion-icon name="arrow-dropright-circle"></ion-icon>
+		     </button>
+		</ion-card-content>
+</ion-content>
