@@ -10,23 +10,5 @@
 
 <ion-content padding>
 		
-		<form [formGroup]="bills" (ngSubmit)="logForm()">
-		 <ion-item>
-		  <ion-label color="primary" stacked>Category</ion-label>     
-		  </ion-item>
-	      <ion-auto-complete [dataProvider]="githubUsers" #searchbar></ion-auto-complete>
-		  <ion-item>
-	         <ion-label floating>Amount</ion-label>
-	        <ion-input type="text"   formControlName="amount"></ion-input>
-	      </ion-item>
-	      <ion-item>
-	        <ion-label floating>Date</ion-label>
-  			<ion-datetime displayFormat="MM/DD/YYYY HH:mm"  formControlName="billDateTime"></ion-datetime>
-	      </ion-item>
-		  <ion-item>
-	        <ion-label floating>Description</ion-label>
-	        <ion-textarea formControlName="description" formControlName="description"></ion-textarea>
-	      </ion-item>
-		 <button ion-button type="submit" [disabled]="!bills.valid">Submit</button>
-    </form>
+		Under COnstruction
 </ion-content>

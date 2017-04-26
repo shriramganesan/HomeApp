@@ -1,0 +1,19 @@
+page-dashboard-expenses {
+	.slider {
+		//opacity: 0;
+	    -moz-transition: opacity 0.4s ease-in-out;
+	    -o-transition: opacity 0.4s ease-in-out;
+	    -webkit-transition: opacity 0.4s ease-in-out;
+	    transition: opacity 0.4s ease-in-out;
+	      margin-top : 20px;
+		}
+	.expenses-item{
+			font-size: 1.2rem;
+	}
+	.item-md h2 {
+			font-size: 1.5rem;
+	}
+	.note-md{
+			font-size: 1.5rem;
+	}
+}

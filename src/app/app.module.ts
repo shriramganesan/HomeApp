@@ -1,39 +1,42 @@
 import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler,LoadingController } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
-import { BillsPage } from '../pages/bills/bills';
-import { BudgetPage } from '../pages/budget/budget';
-import { ExpensesPage } from '../pages/expenses/expenses';
-import { RemindersPage } from '../pages/reminders/reminders';
-import { SettingsPage } from '../pages/settings/settings';
-import { SocialmediaPage } from '../pages/socialmedia/socialmedia';
-import { AUTOCOMPLETE_DIRECTIVES, AUTOCOMPLETE_PIPES } from 'ionic2-auto-complete';
-import { GithubUsers } from '../providers/github-users';
-
-import {Directive} from 'ionic2-input-mask';
+import { IonicStorageModule} from '@ionic/storage'
+import { Push} from "@ionic-native/push";
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { LoginPage } from '../pages/loginpage/loginpage';
+import { LoginPageServiceProvider } from '../providers/loginpage-service';
+import { ExpensesModule} from '../modules/expenses.module';
+import { HomeAppServiceProvider} from '../providers/homeapp-service';
+import { CategoryServiceProvider } from '../providers/category-service';
 @NgModule({
   declarations: [
     MyApp,
     Page1,
-    Page2,
-    BillsPage,BudgetPage,ExpensesPage,RemindersPage,SettingsPage,SocialmediaPage,
-    AUTOCOMPLETE_DIRECTIVES,
-    AUTOCOMPLETE_PIPES,
-    Directive
+    LoginPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: '__mydbName',
+      driverOrder: ['sqlite', 'indexeddb', 'websql']
+    }),
+    ExpensesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     Page1,
-    Page2,
-    BillsPage,BudgetPage,ExpensesPage,RemindersPage,SettingsPage,SocialmediaPage
+    LoginPage
   ],
-  providers: [GithubUsers,{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+  HomeAppServiceProvider,CategoryServiceProvider,
+  LoginPageServiceProvider,
+  LocalNotifications,
+  Push,
+  LoadingController,
+  IonicStorageModule,
+  {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

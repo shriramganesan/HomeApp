@@ -6,15 +6,93 @@
     <ion-title>Expenses</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content>
 
+  <ion-card>
 
-<ion-content padding>
+   <!--  <img src="img/exp1.png"  /> -->
+	<ion-card-header>
+         Expenses Menu
+    </ion-card-header>
+    <ion-card-content>
+     
+    </ion-card-content>
+
+    <ion-item [navPush]="smsPage">
+      <ion-icon name='md-mail' item-left style="color: #d03e84"></ion-icon>
+      Parse SMS      
+    </ion-item>
+
+    <ion-item [navPush]="newBillPage">
+      <ion-icon name='md-cash' item-left style="color: #55acee"></ion-icon>
+      New Bill Entry
+    </ion-item>
+    <ion-item [navPush]="dashboard">
+      <ion-icon name='md-stats' item-left ></ion-icon>
+     Track Expenses
+      <ion-badge item-right>{{getTotalExpensesLength()}}</ion-badge>
+    </ion-item>
+  </ion-card>
+  			
+</ion-content>
+
+<!--<ion-content padding>
 		<ion-card-content>
-		     <button ion-button icon-right block [navPush]="smsPage" >Parse SMS Entry 
-						<ion-icon name="arrow-dropright-circle"></ion-icon>
+			 <button ion-button color="dark" icon-only [navPush]="smsPage" light>
+		                    <ion-icon name="browsers"></ion-icon>
+		                    <ion-note >Parse SMS &nbsp;&nbsp;</ion-note>
 		     </button>
-		     <button ion-button icon-right block [navPush]="newBillPage" >New Bill Entry
+		     <button ion-button color="dark" icon-only [navPush]="newBillPage" light>
+		                    <ion-icon name="create"></ion-icon>
+		                    <ion-note >Bill Entry&nbsp;&nbsp;  </ion-note>
+		     </button>
+		     
+		      <button ion-button icon-right block [navPush]="smsPage" >Parse SMS Entry 
+						<ion-icon name="arrow-dropright-circle"></ion-icon>
+		     </button> -->
+		     <!-- <button ion-button icon-right block [navPush]="newBillPage" >New Bill Entry
 		     		<ion-icon name="arrow-dropright-circle"></ion-icon>
+
+		     </button> -->
+		    <!--  <button ion-button icon-right block  (click)="syncData()" >Sync Local Data
+		     		<ion-icon name="arrow-dropright-circle"></ion-icon>
+		     </button> -->
+		    <!--  <button ion-button icon-right block  (click)="refreshData()" >Refresh Expenses
+		     		<ion-icon name="arrow-dropright-circle"></ion-icon>
+		     </button> -->
+		   <!--   <ion-list>
+		          <ion-item *ngFor="let bill of bills">		           
+		            <ion-img  style="width: 180px; height: 180px;" src=" {{bill.billImage}}" item-right></ion-img>         
+		          </ion-item>
+  			</ion-list>
+ 
+  			 <ion-list>
+ 
+		        <ion-item-sliding *ngFor="let bill of billsLocal">
+		 
+		            <ion-item >
+		            	<ion-icon name="pricetag" item-left></ion-icon>
+					    <h2 (click) = "showLocalBill(bill)">{{bill.categoryId.categoryName}}</h2>
+               			 <ion-note item-right>{{formatDate(bill.billDateTime) | date: 'dd/MM/yyyy H:mm' : 'IST'}}</ion-note>
+                		<p>Rs. {{bill.amount}}</p>   
+					</ion-item>
+		 
+		            <ion-item-options>
+		                <!-- <button ion-button icon-only (click)="editNote(bill)" light>
+		                    <ion-icon name="paper"></ion-icon>
+		                </button> 
+		                <button ion-button icon-only (click)="deleteLocalBill(bill)" danger>
+		                    <ion-icon name="trash"></ion-icon>
+		                </button>
+		            </ion-item-options>
+		 
+		        </ion-item-sliding>
+ 
+   			 </ion-list>
+   			  <button ion-button color="dark" icon-only  right (click)="refreshData()" light>
+		                    <ion-icon name="refresh"></ion-icon>
+		                    <ion-note >Refresh&nbsp;&nbsp;</ion-note>
 		     </button>
 		</ion-card-content>
 </ion-content>
+-->

@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Expenses Entry</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    
+    <form [formGroup]="bills" (ngSubmit)="logForm($event)">
+     <ion-item no-lines>
+      <ion-label color="primary" stacked> Enter Category
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            
+            <ng-container  *ngFor = "let hints of categoryHints;let i = index">
+          <ion-note   item-right (click) = "fillCategory(hints)">
+                {{hints}}
+            </ion-note>
+        </ng-container>
+            <!-- <ion-note #ele1 item-right (click) = "fillCategory($event,ele1)">Grocery</ion-note>
+            <ion-note #ele2 item-right (click) = "fillCategory($event,ele2)">Food</ion-note>
+            <ion-note #ele3 item-right (click) = "fillCategory($event,ele3)">Mobile</ion-note> -->
+      </ion-label> 
+      </ion-item>
+        <ion-auto-complete [dataProvider]="categoryServiceProvider" #searchbar></ion-auto-complete>   
+
+        <ion-item>
+        <ion-label color="primary" stacked>Mode Of Payment</ion-label>     
+            <ion-select formControlName="modeOfPayment">
+              <ion-option *ngFor="let key of modes" value="{{key}}" >{{key}}</ion-option> 
+            </ion-select>
+        </ion-item>
+
+      <ion-item>
+           <ion-label color="primary" stacked>Amount</ion-label>
+       <ion-input type="text"   formControlName="amount"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" stacked>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm"  formControlName="billDateTime"></ion-datetime>
+        </ion-item>
+        <ion-item no-lines>
+      <ion-label color="primary" stacked> Location
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            
+            <ng-container  *ngFor = "let hints of locationHints;let i = index">
+          <ion-note   item-right (click) = "fillLocation(hints)">
+                {{hints}}
+            </ion-note>
+        </ng-container>
+      </ion-label> 
+      </ion-item>
+        <ion-item class="hintsclass">
+           <ion-input type="text"   formControlName="location"></ion-input>
+        </ion-item>
+        <ion-item no-lines >
+          <ion-label color="primary" stacked  >Shop Name
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <ng-container  *ngFor = "let hints of shopHints;let i = index">
+              <ion-note   item-right (click) = "fillShop(hints)">
+                    {{hints}}
+                  </ion-note>
+                  </ng-container>
+              </ion-label>
+      </ion-item>
+        <ion-item class="hintsclass">
+            <ion-input type="text"   formControlName="shopName"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label color="primary" stacked>Description</ion-label>
+          <ion-textarea formControlName="description"></ion-textarea>
+        </ion-item>
+        <ion-item>
+             <div text-center>  
+                 <button ion-button color="light" (click) = "takeBillSnapshot($event)">Bill Snapshot</button>
+                 <button ion-button color="light" (click) = "loadLocation($event)"><ion-icon name="pin"></ion-icon>&nbsp;&nbsp;Detect Location</button>
+             </div>
+             <div  text-center *ngIf = "imageSrc && imageSrc.length > 0">
+                   <ion-img  style="width: 180px; height: 180px;" src="{{imageSrc}}" ></ion-img>
+             </div>
+        </ion-item>
+        <div text-center>
+      <button ion-button type="submit" style="text-align:center;" [disabled]="!bills.valid">Submit</button>
+      <button ion-button type="reset" style="text-align:center;" [disabled]="bills.id!=''">Reset</button>
+      </div>
+    </form>
+</ion-content>

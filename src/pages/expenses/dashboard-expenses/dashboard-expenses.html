@@ -1,0 +1,93 @@
+<!--
+  Generated template for the DashboardExpenses page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Expenses Dashboard</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+		
+  		<ion-list>
+ 
+		        <ion-item-sliding *ngFor="let bill of bills | async ">
+		 				
+		            <ion-item (click)="toggleDetails(bill)">
+		            	<ion-icon name="md-trending-down" item-left style="color: #55acee"></ion-icon>
+					    <h2 >{{bill.categoryId.categoryName}}</h2>
+               			<ion-note item-right>{{formatDate(bill.billDate) }}</ion-note>
+                		<p>Rs. {{bill.amount}}</p>   
+                		
+					</ion-item>
+					<ion-item-options *ngIf="!bill.showDetails">
+		                <button ion-button icon-only (click)="editBill(bill)" light>
+		                   <ion-icon name="md-build" style="color: white"></ion-icon>
+		                </button> 
+		                <button ion-button icon-only (click)="deleteBill(bill)" danger>
+		                   <ion-icon name="trash" style="color: white"></ion-icon>
+		                </button>
+		            </ion-item-options>
+		 		    
+		 			<ion-item *ngIf="bill.showDetails" class="expenses-item">
+		 		    		
+                				<ion-row >
+                							<ion-col width-33>Amount</ion-col>
+                							<ion-col width-67>{{bill.amount}}</ion-col>
+                				</ion-row>
+                				<ion-row >
+                							<ion-col width-33>Date</ion-col>
+                							<ion-col width-67> {{formatDate(bill.billDate)}}
+                							</ion-col>
+                				</ion-row>	
+    							<ion-row >
+                							<ion-col width-33>Mode</ion-col>
+                							<ion-col width-67> {{bill.modeOfPayment.modeOfPayment}}
+                							</ion-col>
+                				</ion-row>
+                				<ion-row >
+                							<ion-col width-33>Location</ion-col>
+                							<ion-col width-67> {{bill.location}}
+                							</ion-col>
+                				</ion-row>
+                				<ion-row >
+                							<ion-col width-33>Shop Name</ion-col>
+                							<ion-col width-67> {{bill.shopName}}
+                							</ion-col>
+                				</ion-row>
+                				<ion-row>
+                						<ion-col >
+                							 <button ion-button clear item-right (click)="viewBill(bill)" >
+		                    				 <ion-icon name="md-search" style="color: #d03e84"></ion-icon>
+		                				</button> 
+                							 <button ion-button clear item-right (click)="editBill(bill)" >
+		                    				 <ion-icon name="md-build" style="color: #55acee"></ion-icon>
+		                				</button> 
+		                				<button ion-button clear item-right (click)="deleteBill(bill)" >
+		                    				<ion-icon name="trash" style="color: red"></ion-icon>
+		                				</button>
+                						</ion-col>
+                				</ion-row>
+             					<!-- <p>Amount: {{bill.amount}}</p>	
+               					 <p>Date: {{formatDate(bill.billDateTime) | date: 'dd/MM/yyyy H:mm' : 'IST'}}</p>	
+               					<p>Category: {{bill.categoryId.categoryName}}</p>				
+                				<p>Mode Of Payment: {{bill.modeOfPayment}}</p>
+                				
+                				
+                				<p>Location: {{bill.location}}</p>
+                				<p>Shop Name: {{bill.shopName}}</p> -->
+                				
+                				
+						
+		 		    </ion-item>	
+		            
+		        </ion-item-sliding>
+ 						
+   			 </ion-list>
+</ion-content>
